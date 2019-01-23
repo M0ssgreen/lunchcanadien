@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: cadetblue">
+    <div class="container">
+        <h2>Profil Utilisateur</h2>
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label>John</label>
+                <label>DOE</label>  
+            </div>
+
+            <div class="form-group">
+            <label>email@adresse.com</label>
+            </div>
+
+            <div class="form-group">
+                    <img src="img/user.jpg" height="30%" width="30%">
+            </div>
+
+            <div class="form-group">
+                    <label>ENTREPRISE</label>
+            </div>
+
+            <div class="form-group">
+                    <text>Mon comentaire est vraiment trop bien</text>
+            </div>
+
+            
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modifier</button>
+        </form>
+      </div>
+
+      <!-- Modal email -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modifier</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+                <input class="form-control" id="prenommodif" placeholder="Prénom" name="nouveauprenom" value="John">   
+        </div>
+        <div class="modal-body">
+                <input class="form-control" id="nommodif" placeholder="Nom" name="nouveaunom" value="DOE">   
+        </div>
+        <div class="modal-body">
+                <input type="email" class="form-control" id="mailmodif" placeholder="Nouvel email" name="nouvelemail" value="email@adresse.com">
+                    
+        </div>
+
+        <div class="modal-body">
+                <input type="file" class="form-control-file" id="photomodif" value="">         
+        </div>
+
+        <div class="modal-body">
+            <input class="form-control" id="entreprisemodif" placeholder="Nouvelle Entreprise" name="nouvelleentreprise" value="ENTREPRISE">              
+        </div>
+
+        <div class="modal-body">
+                <textarea class="form-control" id="commentairemodif" placeholder="Nouveau commentaire" name="nouvelledescription">MON COMMENTAIRE DEJA PRESENT</textarea>   
+        </div>
+            
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Valider</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Retour</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+ 
+</body>
+</html>
+
+
