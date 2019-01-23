@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	</html><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+</head>
+<body>
+
+
+<div class="container">    
+            
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-7 col-md-offset-3 col-sm-12 col-sm-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Inscription</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/accounts/login/">Se connecter</a></div>
+            </div>  
+            <div class="panel-body" >
+                <form method="post" action=".">
+                    <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            
+
+                    <form  class="form-horizontal" method="post" >
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <div id="div_id_gender" class="form-group required">
+                            <label for="civilite"  class="control-label col-md-3  requiredField"> Civilité <span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-9 "  style="margin-bottom: 10px">
+                                 <label class="radio-inline"> <input type="radio" name="gender" id="civilite" value="M"  style="margin-bottom: 10px">Monsieur</label>
+                                 <label class="radio-inline"> <input type="radio" name="gender" id="id_gender_2" value="F"  style="margin-bottom: 10px">Madame </label>
+                            </div>
+                        </div>
+                        <div id="div_id_username" class="form-group required">
+                            <label for="id_username" class="control-label col-md-3  requiredField"> Nom<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-9 ">
+                                <input class="input-md  textinput textInput form-control" id="nomSaisi" maxlength="30" name="nomSaisi" placeholder="Nom" style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        <div id="div_id_username" class="form-group required">
+                            <label for="id_username" class="control-label col-md-3  requiredField"> Prénom<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-9 ">
+                                <input class="input-md  textinput textInput form-control" id="prenom" maxlength="30" name="prenom" placeholder="Prénom" style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        <div id="div_id_email" class="form-group required">
+                            <label for="id_email" class="control-label col-md-3  requiredField"> E-mail<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-9 ">
+                                <input class="input-md emailinput form-control" id="id_email" name="email" placeholder="Adresse e-mail" style="margin-bottom: 10px" type="email" />
+                            </div>     
+                        </div>
+                        <div id="div_id_password1" class="form-group required">
+                            <label for="mdp" class="control-label col-md-3  requiredField">Mot de passe<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-9 "> 
+                                <input class="input-md textinput textInput form-control" id="mdp" name="mdp" placeholder="Mot de passe" style="margin-bottom: 10px" type="password" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group"> 
+                            <div class=" col-md-2 "></div>
+                            <div class="controls col-md-9 ">
+                                <input type="submit" name="inscription" value="S'inscrire" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                                
+                            </div>
+                        </div> 
+                            
+                    </form>
+
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>
+    
+
+
+
+
+
+</div>  
+</body>
