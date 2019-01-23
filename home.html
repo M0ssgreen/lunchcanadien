@@ -6,9 +6,10 @@
     <title>accueil</title>
     <link href="css/lunch.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>   
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 
 
     
@@ -17,6 +18,7 @@
     
 </head>
 <body id="page-top">
+
   <nav class="navbar  navbar-expand-lg  fixed-top bg-light">
     <div class="container">
             <a class="navbar-brand" href="#"><span>Lunch</span>Canadien</a>
@@ -36,8 +38,11 @@
                     <a class="nav-link" href="creation.html">Participer</a>
                   </li> 
                   <li class="nav-item">
-                    <a class="nav-link" href="connexion.html">Se connecter</a>
-                  </li> <li class="nav-item">
+                    <a class="nav-link" href="#exampleModal"data-toggle="modal" data-target="#exampleModal" >Se connecter</a>
+                  </li> 
+                  
+                    
+                  <li class="nav-item">
                     <a class="nav-link" href="inscription.html">S'inscrire</a>
                   </li> 
               
@@ -45,7 +50,33 @@
     </div>
     
   </nav>
-
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Se connecter</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="mail" class="col-form-label">E-mail</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="mdp" class="col-form-label">Mot de passe</label>
+              <input type="password" class="form-control" id="recipient-name">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Se connecter</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <div class="banner">
     <div class="container">
@@ -56,7 +87,7 @@
     <div class="banner-sub-heading">
     Organisez votre prochain déjeuner !
     </div>
-    <button type="button" class="btn btn-warning text-dark btn-banner">Participer à un évènement</button>
+    <button type="button" class="btn btn-warning text-dark btn-banner" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Participer à un évènement</button>  
     <button type="button" class="btn btn-warning text-dark btn-banner">Voir mes évènementss</button>
     </div>
     </div>
@@ -69,7 +100,10 @@
     </div>
   </div>
   </section>
-  <script src="/js/lunch.js"></script>
+
+
+  <script src="js/lunch.js"></script>
+  
       
 </body>
 </html>
