@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+</head>
+<body>
+
+        <div id="navigation"></div>
+
+    <h1>Bonjour les solutecien</h1>
+
+    <script>
+
+        //chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+        $(document).ready(function() {
+            $("#decl").click(function(event) {
+                $.getJSON('http://localhost:8080/demandes/1' , function(pe){
+                    $('#elem').html('<p> Id : ' + pe.idDemande + '</p>');
+                    $('#elem').append('<p> Name : ' + pe.idUser.nom + '</p>')
+                    $('#elem').append('<p> Mail : ' + pe.dateFin + '</p>')
+                });
+            });
+        });
+
+        $(document).ready(function() {
+    $('#navigation').load('navbar.html');
+});
+    </script>
+
+    <input type="button" id="decl" value="Déclenche notre API" />
+    
+    <div id="elem">
+        <p>ici sera tout ce qu'on reçois de notre api</p>
+        <br>
+
+    </div>
+
+</body>
+</html>
