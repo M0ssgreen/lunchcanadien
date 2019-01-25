@@ -24,19 +24,19 @@
      <div class="container"><h1>Organiser votre prochain déjeuner</h1>
         <div class="container well">
             
-            <form enctype='application/json' action="http://localhost:8080/demandes" method="POST">
+            <form enctype="application/x-www-form-urlencoded" action="http://localhost:8080/demandes" method="POST">
                 
                 Date de début
                 <input type="datetime-local" name="dateDebut" value='2018-06-13T12:00'>
                 Date de fin
                 <input type="datetime-local" name="dateFin" value='2018-06-13T14:00'>
-                Votre userid
-                <input name="user[id]" value='1'>
+                <input name="user[id]" value="1">
                 <input type="submit" value="Envoyer">
                 
               </form>
           </div>
         </div>
+
 
         
        
