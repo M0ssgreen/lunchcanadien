@@ -2,7 +2,7 @@
 .body{
 	font-family: 'Gothic A1', sans-serif;
 	font-size:16px;
-	padding-top:100px;
+	margin-top: 100px;
 	}
 	p{
 	color:#6c6c6f;
@@ -13,6 +13,10 @@
 	color: #fed136;
 	font-size:25px;font-weight:700;letter-spacing:0.1em;
     font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+
+.contenu {
+	margin-top: 200px;
 }
 .navbar-brand {
 	color: rgb(0, 0, 0);
