@@ -3,7 +3,7 @@ $(document).ready(function() {
               
             for (i in evs){
             	if (evs[i].status == 1)
-                $('#elem').append('<tr><form  action="/event" method="POST"><td>' + evs[i].idEvent + '</td><td>' + evs[i].dateDebut + ' à ' + evs[i].dateFin + '</td><td>' + evs[i].nbUser+ '</td><td><input type="submit" value="afficher votre lunch" class="btn btn-outline-secondary"></td></form></tr>');
+                $('#elem').append('<tr><td>' + evs[i].idEvent + '</td><td>' + evs[i].dateDebut + ' à ' + evs[i].dateFin + '</td><td>' + evs[i].nbUser+ '</td><td><form  action="event.html"><input type="text" hidden="" value="evs[i].idEvent" name="idevent" ><button type="submit" value="afficher votre lunch" class="btn btn-outline-secondary">affiche</button></form></td></tr>');
             }
             
           });
