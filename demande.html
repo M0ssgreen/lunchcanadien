@@ -24,15 +24,19 @@
      <div class="container"><h1>Organiser votre prochain déjeuner</h1>
         <div class="container well">
             
-            <form action="/action_page.php">
+            <form action="http://localhost:8080/demandes" method="POST">
+                Votre userid
+                <input type="number" name="idUser">
                 Date de début
-                <input type="datetime-local" name="dateDebut" value="2017-06-13T12:00">
+                <input type="datetime-local" name="dateDebut" value="2018-06-13T12:00">
                 Date de fin
-                <input type="datetime-local" name="dateFin" value="2017-06-13T14:00">
+                <input type="datetime-local" name="dateFin" value="2018-06-13T14:00">
                 <input type="submit" value="Envoyer">
               </form>
           </div>
         </div>
+
+        
        
     
       
@@ -46,7 +50,7 @@
         $.getJSON('http://localhost:8080/demandes' , function(data){
               
             for (i in data){
-                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td></tr>');
+                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td></tr>');
             }
             
           });
