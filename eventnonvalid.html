@@ -32,13 +32,25 @@
       //chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 
       $(document).ready(function() {
-        $.getJSON('http://localhost:8080/events' , function(evs){
-              
-            for (i in evs){
-                $('#elem').append('<tr><td>' + evs[i].idEvent + '</td><td>' + evs[i].dateDebut + ' à ' + evs[i].dateFin + '</td><td>' + evs[i].nbUser + '</td><td>' + 'à voir' + '</td></tr>');
-            }
+        
+        $.getJSON('http://localhost:8080/demandeuser/1' , function(dmd){
+
+            for (j in dmd){
+              if (dmd[j].idEvent.nbUser>2){
+                if (dmd[j].status==1){
+                  $('#elem').append('<tr><td>' + dmd[j].idEvent.idEvent+ '</td><td>' + dmd[j].idEvent.dateDebut + ' à ' + dmd[j].idEvent.dateFin + '</td><td>' + dmd[j].idEvent.nbUser + '</td><td>En attente de vos compères...</td></tr>');
+                } 
+                else {
+                  $('#elem').append('<tr><td>' + dmd[j].idEvent.idEvent+ '</td><td>' + dmd[j].idEvent.dateDebut + ' à ' + dmd[j].idEvent.dateFin + '</td><td>' + dmd[j].idEvent.nbUser + '</td><td><button onclick=window.location.href=/profil.html" id="boutonvalid'+j+'" type="button" class="btn btn-success">Valider</button><button type="button" id="boutonannul'+j+'" class="btn btn-danger">Annuler</button></td><div id="iddmd'+j+'" style= "visibility: hidden;">'+dmd[j]+'</div></tr>');
+              }
+              }
             
-          });
+            }
+            // $('#elem').html('<tr><td>1text</td><td>2text</td><td>3text</td></tr>');
+
+
+            });
+
         
            // $('#elem').html('<tr><td>1text</td><td>2text</td><td>3text</td></tr>');
                  
@@ -48,6 +60,20 @@
       $(document).ready(function() {
 });
   </script>
+  <script>
+    $("#boutonvalid"+j).click(function (e) {    
+        $.ajax({
+      type: PUT,
+      url: "http://localhost:8080/demande/valid/{id}",
+      contentType: "application/json; charset=utf-8",
+      data: '{"idDemande":' + $("#iddmd").val() + '}',
+      dataType: "json",
+               
+          });
+                 
+        })
+    
+    </script>
 
 
 
@@ -61,7 +87,6 @@
                             <th>Lunch</th>
                             <th>Date</th>
                             <th>nombre de convives</th>
-                            <th>Ayant accepté</th>
                             <th>État</th>
                           </tr>
                         </thead>
