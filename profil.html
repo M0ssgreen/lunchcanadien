@@ -16,19 +16,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
 </head>
 <body style=" background-color: cadetblue">
-  <div id="header"></div>
+        
+ 
+<script>
+var prenomUser;
+$(document).ready(function(){
+ 
+ $.getJSON('http://localhost:8080/users/7' , function(pe){
+     $('#prenom').append("<label>" + pe.prenom + "</label>");
+     $('#prenommodif').val(pe.prenom);
+     $('#nom').append("<label>" + pe.nom + "</label>");
+     $('#nommodif').val(pe.nom);
+     $('#mail').append("<label>" + pe.mail + "</label>");
+     $('#mailmodif').val(pe.mail);
+     $('#entreprise').append("<label>" + pe.entreprise + "</label>");
+     $('#entreprisemodif').val(pe.entreprise);
+ });
+});
 
+</script>
+
+ <div id="header"></div>
   <div class="contenu">
   <div class=" container">
         <h2>Profil Utilisateur</h2>
         <form action="/action_page.php">
-            <div class="form-group">
-                <label>John</label>
-                <label>DOE</label>  
+            <div class="form-group" >
+                <div id="prenom"></div>
+                <div id="nom"></div>
             </div>
 
             <div class="form-group">
-            <label>email@adresse.com</label>
+                <div id="mail"></div>
             </div>
 
             <div class="form-group">
@@ -36,7 +55,7 @@
             </div>
 
             <div class="form-group">
-                    <label>ENTREPRISE</label>
+                <div id="entreprise"></div>
             </div>
 
             <div class="form-group">
@@ -61,10 +80,10 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-                <input class="form-control" id="prenommodif" placeholder="Prénom" name="nouveauprenom" value="John">   
+                <input class="form-control" id="prenommodif" placeholder="Prénom" name="nouveauprenom" value="Prenom">   
         </div>
         <div class="modal-body">
-                <input class="form-control" id="nommodif" placeholder="Nom" name="nouveaunom" value="DOE">   
+                <input class="form-control" id="nommodif" placeholder="Nom" name="nouveaunom" value="Nom">   
         </div>
         <div class="modal-body">
                 <input type="email" class="form-control" id="mailmodif" placeholder="Nouvel email" name="nouvelemail" value="email@adresse.com">
