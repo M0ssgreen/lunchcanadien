@@ -52,8 +52,13 @@
         $.getJSON('http://localhost:8080/demandes' , function(data){
               
             for (i in data){
+              if(data[i].status == 1){
+                var etat = "Confirmée";
+              }else {
+                var etat ="Non confirmée"
+              }
                 //$('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td></tr>');
-                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td><td><button onclick="" id="confirmDemande" type="button" class="btn btn-success">Confirmer</button></td>'+'<td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger">Annuler</button></td> '+'</tr>');
+                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + etat + '</td><td><button onclick="" id="confirmDemande" type="button" class="btn btn-success">Confirmer</button></td>'+'<td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger">Annuler</button></td> '+'</tr>');
             }
             
           });
