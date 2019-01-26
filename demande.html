@@ -24,7 +24,7 @@
      <div class="container"><h1>Organiser votre prochain déjeuner</h1>
         <div class="container well">
             
-            <form enctype="application/x-www-form-urlencoded" action="http://localhost:8080/demandes" method="POST">
+            <form enctype="application/json" action="http://localhost:8080/demandes" method="POST">
                 
                 Date de début
                 <input type="datetime-local" name="dateDebut" value='2018-06-13T12:00'>
@@ -52,7 +52,8 @@
         $.getJSON('http://localhost:8080/demandes' , function(data){
               
             for (i in data){
-                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td></tr>');
+                //$('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td></tr>');
+                $('#elem').append('<tr><td>' + data[i].idDemande + '</td><td>' + data[i].dateDebut + ' à ' + data[i].dateFin + '</td><td>' + data[i].status + '</td><td><button onclick="" id="confirmDemande" type="button" class="btn btn-success">Confirmer</button></td>'+'<td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger">Annuler</button></td> '+'</tr>');
             }
             
           });
