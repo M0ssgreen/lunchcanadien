@@ -74,7 +74,7 @@
                 <td data-bind="text: dateFin"></td>
                 <td data-bind="text: status? 'Confirmée' : 'Non confirmée'"></td>
                 <td><button onclick="" id="confirmDemande" type="button" class="btn btn-success" data-bind="click:$parent.confirmDemande">Confirmer</button></td>
-            <td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger">Annuler</button></td>
+            <td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger"  data-bind="click:$parent.deleteDemande">Annuler</button></td>
             
             </tr>
       

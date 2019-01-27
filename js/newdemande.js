@@ -19,6 +19,7 @@ var ViewModel = function () {
 
     var demandeUri ='http://localhost:8080/demandes';
     var validdemandeUri ='http://localhost:8080/demande/valid';
+    var supprdemandeUri ='http://localhost:8080/demandes';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -68,6 +69,12 @@ var ViewModel = function () {
         };
 
         ajaxHelper(validdemandeUri+'/'+item.idDemande, 'PUT', confirmDemande)
+
+    }
+
+    self.deleteDemande = function (item){
+
+        ajaxHelper(supprdemandeUri+'/'+item.idDemande, 'DELETE', confirmDemande)
 
     }
 
