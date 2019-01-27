@@ -11,9 +11,14 @@ var ViewModel = function () {
     self.user = {
         idUser:ko.observable()
     }
+    self.oldDemande = {
+        status: ko.observable(true)
+    }
+
    
 
     var demandeUri ='http://localhost:8080/demandes';
+    var validdemandeUri ='http://localhost:8080/demande/valid';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -28,6 +33,19 @@ var ViewModel = function () {
         });
     }
 
+    function getAllDemandes() {
+        ajaxHelper(demandeUri, 'GET').done(function (data) {
+            self.demande(data);
+        });
+    }
+
+    self.getDemandeDetail = function (item) {
+        ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
+        self.detail(data);
+        });
+    }
+
+
     self.addDemande = function (formElement) {
         var demande = {
             user : {id :self.user.idUser()},
@@ -40,7 +58,21 @@ var ViewModel = function () {
         
     }
 
-    
+    self.confirmDemande = function (item) {
+        var confirmDemande = {
+            idDemande: item.idDemande,
+            dateDebut: item.dateDebut,
+            dateFin: item.dateFin,
+            status: "true",
+            user : {id :item.user.id}
+        };
+
+        ajaxHelper(validdemandeUri+'/'+item.idDemande, 'PUT', confirmDemande)
+
+    }
+
+     // Fetch the initial data.
+     getAllDemandes();
 };
 
 ko.applyBindings(new ViewModel());
