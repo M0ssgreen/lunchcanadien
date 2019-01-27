@@ -4,10 +4,14 @@ var ViewModel = function () {
     self.error = ko.observable();
     self.detail = ko.observable();
     self.newDemande = {
-        idUser : ko.observable(),
+        
         dateDebut: ko.observable(),
-        dateFin: ko.observable(),
+        dateFin: ko.observable()
     }
+    self.user = {
+        idUser:ko.observable()
+    }
+   
 
     var demandeUri ='http://localhost:8080/demandes';
 
@@ -26,9 +30,10 @@ var ViewModel = function () {
 
     self.addDemande = function (formElement) {
         var demande = {
-            idUser: self.newDemande.idUser(),
+            user : {id :self.user.idUser()},
             dateDebut: self.newDemande.dateDebut(),
             dateFin: self.newDemande.dateFin(),
+            
         };
     
         ajaxHelper(demandeUri, 'POST', demande)

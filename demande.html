@@ -33,9 +33,12 @@
     <div class="container">
 
       <form  data-bind="submit: addDemande">
+          <div data-bind="with: user" >Votre user ID
+              <input name="user[id]" value="1"data-bind="value:idUser">
+            </div> 
         <div class="form-group well" data-bind="with: newDemande">
-          Votre user ID
-          <input name="user[id]" value="1"data-bind="value:idUser">
+          
+          
           Date de début
           <input type="datetime-local" name="dateDebut" value='2018-06-13T12:00'data-bind="value:dateDebut">
           Date de fin
