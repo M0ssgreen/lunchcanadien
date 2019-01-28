@@ -61,7 +61,8 @@ var ViewModel = function () {
                 mdp :self.user.mdp(),
                 entreprise :self.user.entreprise()},
             
-            date: self.newDemande.date(),
+            event : {
+                date: self.newDemande.date()},
             
         };
     
