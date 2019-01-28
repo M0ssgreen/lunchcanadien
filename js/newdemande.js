@@ -1,23 +1,27 @@
 var ViewModel = function () {
     var self = this;
     self.demande = ko.observableArray();
+    
     self.error = ko.observable();
     self.detail = ko.observable();
     self.newDemande = {
-        
+        date: ko.observable(),
         dateDebut: ko.observable(),
         dateFin: ko.observable()
     }
     self.user = {
-        idUser:ko.observable()
+        idUser:ko.observable(),
+        nom : ko.observable(),
+        prenom : ko.observable(),
+        mail : ko.observable(),
+        mdp : ko.observable(),
+        entreprise : ko.observable(),
     }
-    self.oldDemande = {
-        status: ko.observable(true)
-    }
+    
 
-   
 
-    var demandeUri ='http://localhost:8080/demandes';
+    var eventUri ='http://localhost:8080/events';
+    var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
 
@@ -48,18 +52,26 @@ var ViewModel = function () {
 
 
     self.addDemande = function (formElement) {
+        console.log("demande")
         var demande = {
-            user : {id :self.user.idUser()},
-            dateDebut: self.newDemande.dateDebut(),
-            dateFin: self.newDemande.dateFin(),
+            user : {
+                nom :self.user.nom(),
+                prenom :self.user.prenom(),
+                mail :self.user.mail(),
+                mdp :self.user.mdp(),
+                entreprise :self.user.entreprise()},
+            
+            date: self.newDemande.date(),
             
         };
     
-        ajaxHelper(demandeUri, 'POST', demande)
+        ajaxHelper(eventUri, 'POST', demande)//.done(function (item) {
+            //self.demande.push(item);
+        //});
         
     }
 
-    self.confirmDemande = function (item) {
+    /**self.confirmDemande = function (item) {
         var confirmDemande = {
             idDemande: item.idDemande,
             dateDebut: item.dateDebut,
@@ -68,18 +80,36 @@ var ViewModel = function () {
             user : {id :item.user.id}
         };
 
-        ajaxHelper(validdemandeUri+'/'+item.idDemande, 'PUT', confirmDemande)
+        ajaxHelper(validdemandeUri+'/'+item.idDemande, 'PUT', confirmDemande).done(function (item) {
+            var pos = self.demande.indexOf(item); //Récupérer l'id dans la liste demande
+            var pos2 = pos-1;
+            self.demande.splice(pos2, 1); //Retirer 1 élément à la position pos2
+            self.demande.push(item); //réafficher l'élément 
+            
+             
+            
+            
+        });
 
     }
 
     self.deleteDemande = function (item){
 
-        ajaxHelper(supprdemandeUri+'/'+item.idDemande, 'DELETE', confirmDemande)
+        ajaxHelper(supprdemandeUri+'/'+item.idDemande, 'DELETE', confirmDemande).done(function (demande) {
+                var pos = self.demande.indexOf(item);
+                var pos2 = pos-1;
+                self.demande.splice(pos2,1);
+                //self.demande.remove(function(demande){
+                  //  return true;
+                //});
+                
+            });
+        
 
     }
 
      // Fetch the initial data.
-     getAllDemandes();
+     getAllDemandes();*/
 };
 
 ko.applyBindings(new ViewModel());
