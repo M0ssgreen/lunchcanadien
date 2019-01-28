@@ -1,6 +1,6 @@
 var ViewModel = function () {
     var self = this;
-    self.demande = ko.observableArray();
+    self.event = ko.observableArray();
     
     self.error = ko.observable();
     self.detail = ko.observable();
@@ -38,9 +38,9 @@ var ViewModel = function () {
         });
     }
 
-    function getAllDemandes() {
-        ajaxHelper(demandeUri, 'GET').done(function (data) {
-            self.demande(data);
+    function getAllEvents() {
+        ajaxHelper(eventUri, 'GET').done(function (data) {
+            self.event(data);
         });
     }
 
@@ -109,8 +109,8 @@ var ViewModel = function () {
 
     }
 
-     // Fetch the initial data.
-     getAllDemandes();*/
+     // Fetch the initial data.*/
+     getAllEvents();
 };
 
 ko.applyBindings(new ViewModel());
