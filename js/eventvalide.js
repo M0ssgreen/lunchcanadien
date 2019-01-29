@@ -40,6 +40,7 @@
 
 
     var eventUri ='http://localhost:8080/events';
+    var eventByIdUri ='http://localhost:8080/event';
     var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
     var demandeUri ='http://localhost:8080/events';
@@ -111,6 +112,12 @@
          
             });
         
+    }
+
+    self.getEventDetail = function (item) {
+        ajaxHelper(eventByIdUri + '/' + item.id, 'GET').done(function (data) {
+        self.detail(data);
+        });
     }
     /**
     self.confirmDemande = function (item) {
