@@ -98,6 +98,9 @@ nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
 	text-align:center;
 	padding-top:30px;
 }
+#map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+	height:400px;
+  }
 
 
 /* mobile view */
