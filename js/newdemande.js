@@ -1,7 +1,7 @@
 var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
-    
+    self.eventByEmail = ko.observableArray();
     self.error = ko.observable();
     self.detail = ko.observable();
     self.newDemande = {
@@ -23,6 +23,7 @@ var ViewModel = function () {
 
 
     var eventUri ='http://localhost:8080/events';
+    var eventValidEmailUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
@@ -45,7 +46,11 @@ var ViewModel = function () {
             self.event(data);
         });
     }
-
+    function getEventsByEmail() {
+        ajaxHelper(eventValidEmailUri, 'GET').done(function (data) {
+            self.eventByEmail(data);
+        });
+    }
     self.getDemandeDetail = function (item) {
         ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
         self.detail(data);
@@ -70,9 +75,9 @@ var ViewModel = function () {
             
         };
     
-        ajaxHelper(eventUri, 'POST', demande)//.done(function (item) {
-            //self.demande.push(item);
-        //});
+        ajaxHelper(eventUri, 'POST', demande).done(function (item) {
+            self.demande.push(item);
+        });
         
     }
 
@@ -114,7 +119,9 @@ var ViewModel = function () {
     }
 
      // Fetch the initial data.*/
+     getEventsByEmail();
      getAllEvents();
+     
 };
 
 ko.applyBindings(new ViewModel());
