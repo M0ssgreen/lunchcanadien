@@ -1,7 +1,7 @@
 var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
-    self.eventByToto = ko.observableArray();
+    //self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
     self.error = ko.observable();
     self.detail = ko.observable();
@@ -26,7 +26,7 @@ var ViewModel = function () {
 
 
     var eventUri ='http://localhost:8080/events';
-    var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
+    //var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
@@ -50,11 +50,11 @@ var ViewModel = function () {
             self.event(data);
         });
     }
-    function getEventsByToto() {
+    /*function getEventsByToto() {
         ajaxHelper(eventValidEmailTotoUri, 'GET').done(function (data) {
             self.eventByToto(data);
         });
-    }
+    }*/
     
     self.getDemandeDetail = function (item) {
         ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
@@ -136,7 +136,7 @@ var ViewModel = function () {
     }
 
      // Fetch the initial data.*/
-     getEventsByToto();
+     //getEventsByToto();
      
      getAllEvents();
      

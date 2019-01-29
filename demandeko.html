@@ -151,7 +151,7 @@
       </tbody>
     </table>
   </div>
-  <div id="header"></div>
+  <!-- <div id="header"></div>
   <div class="container" style="margin-top: 100px;">
     <h2>Events de Toto</h2>
 
@@ -169,28 +169,30 @@
         <tr>
           <td data-bind="text: nom"></td>
           <td data-bind="text: quantieme"></td>
-          <!--<td data-bind="text: dateFin"></td>
+          <td data-bind="text: dateFin"></td>
           <td data-bind="text: status? 'Confirmée' : 'Non confirmée'"></td>
           <td><button onclick="" id="confirmDemande" type="button" class="btn btn-success" data-bind="click:$parent.confirmDemande">Confirmer</button></td>
           <td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger" data-bind="click:$parent.deleteDemande">Annuler</button></td>
--->
-          
-        </tr>
 
-      </tbody>
-    </table>
-  </div>
+         
+</tr>
+
+</tbody>
+</table>
+</div>
+-->
+ 
   <div id="header"></div>
   <div class="container" style="margin-top: 100px;" >
 
       <form data-bind="submit:getMyEvent">
-          <label>Search event by email</label>
+          <h2>Search event by email</h2>
           <div class="form-group" data-bind="with: userMail">
               <input data-bind="value:mail" class="form-control" id="email" type="email" placeholder="Votre adresse e-mail *"
                 required="required" data-validation-required-message="Saisissez votre  adresse email ">
               <p class="help-block text-danger"></p>
             </div>
-          <button  class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
+          <button  class="btn btn-primary  text-uppercase" type="submit">Rechercher</button>
           
           </form>
     
