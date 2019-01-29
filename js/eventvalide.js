@@ -35,6 +35,7 @@
 
 
     var eventUri ='http://localhost:8080/events';
+    var eventValidEmailUri ='http://localhost:8080/eventvalide?email=jo@jo.com';
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
@@ -55,6 +56,11 @@
     function getAllEvents() {
         ajaxHelper(eventUri, 'GET').done(function (data) {
             self.event(data);
+        });
+    }
+        function getEventsByEmail() {
+        ajaxHelper(eventValidEmailUri, 'GET').done(function (data) {
+            self.eventByEmail(data);
         });
     }
 
@@ -80,9 +86,9 @@
             
         };
     
-        ajaxHelper(eventUri, 'POST', demande)//.done(function (item) {
-            //self.demande.push(item);
-        //});
+        ajaxHelper(eventUri, 'POST', demande).done(function (item) {
+            self.demande.push(item);
+        });
         
     }
 
@@ -124,6 +130,7 @@
     }
 
      // Fetch the initial data.*/
+     getEventsByEmail();
      getAllEvents();
 };
 
