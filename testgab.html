@@ -20,7 +20,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyDVscGVwebEYc-UB8pnugwoY8XrD2D8Rxg" type="text/javascript"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="js/googlemap.js" type="text/javascript" defer="defer"></script>
   <script async type="text/javascript">//_____DEBUT FCT MAP
     // On initialise la latitude et la longitude de Paris (centre de la carte)
     var lat = 48.852969;
@@ -76,16 +77,17 @@ Access-Control-Allow-Origin: *
 
 <body style="padding-top: 100px;">
   <script>//______________________Affichage des resto trouvé
-      $(document).ready(function() {
+      /*$(document).ready(function() {
         $.getJSON('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.820921,2.311699&radius=100&type=restaurant&keyword=cruise&key=AIzaSyDVscGVwebEYc-UB8pnugwoY8XrD2D8Rxg' , function(resultat){
-            for (j in resultat){
+            //for (j in resultat){
                   $('#elem').append('<tr><td>' + resultat[j].results.name + '</td></tr>');
-            }
+            //}
         });
-      });
+      });*/
   
-      $(document).ready(function() {
-  });</script>
+     
+        
+  ;</script>
   <div id="navigation"></div>
   <div id="header"></div>
 
@@ -109,7 +111,7 @@ Access-Control-Allow-Origin: *
                   <p class="help-block text-danger"></p>
                 </div>
                 <table>
-                  <tbody id="elem">
+                  <tbody data-bind="foreach:restau">
                     
                   </tbody>
                 </table>
