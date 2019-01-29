@@ -75,9 +75,9 @@ var ViewModel = function () {
             
         };
     
-        ajaxHelper(eventUri, 'POST', demande)//.done(function (item) {
-            //self.demande.push(item);
-        //});
+        ajaxHelper(eventUri, 'POST', demande).done(function (item) {
+            self.demande.push(item);
+        });
         
     }
 
