@@ -78,12 +78,13 @@
                 <h2 class="panel-title">Detail</h2>
               </div>
               <table class="table">
-                <tr><td>Id</td><td data-bind="text: detail().id"></td></tr>
-                <tr><td>Nom</td><td data-bind="text: detail().nom"></td></tr>
-                <tr><td>mail</td><td data-bind="text: detail().quantieme"></td></tr>
-              </table>
+                  <tbody data-bind="foreach: detail()">
+                <tr><td>Nom</td><td data-bind="text: user.nom"></td></tr>
+                <tr><td>Date</td><td data-bind="text: event.quantieme"></td></tr>
+                    </tbody>
+                  </table>
             </div>
-            </div>
+        </div>
             
 
     </div>

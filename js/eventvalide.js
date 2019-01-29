@@ -18,7 +18,8 @@
     self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
     self.error = ko.observable();
-    self.detail = ko.observable();
+    self.detail = ko.observableArray();
+    self.demandes = ko.observableArray();
     self.newDemande = {
         date: ko.observable(),
         nom: ko.observable(),
@@ -43,7 +44,7 @@
     var eventByIdUri ='http://localhost:8080/event';
     var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
-    var demandeUri ='http://localhost:8080/events';
+    var demandeUri ='http://localhost:8080/demandes';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
 
@@ -115,8 +116,9 @@
     }
 
     self.getEventDetail = function (item) {
-        ajaxHelper(eventByIdUri + '/' + item.id, 'GET').done(function (data) {
-        self.detail(data);
+        ajaxHelper(demandeUri + '?eventId=' + item.id, 'GET').done(function (demandes) {
+           console.log(demandes)
+            self.detail(demandes);//(demandes);
         });
     }
     /**
@@ -158,7 +160,7 @@
     }
 
      // Fetch the initial data.*/
-     getEventsByToto();
+     //getEventsByToto();
      
      getAllEvents();
      
