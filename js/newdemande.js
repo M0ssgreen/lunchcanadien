@@ -6,6 +6,7 @@ var ViewModel = function () {
     self.detail = ko.observable();
     self.newDemande = {
         date: ko.observable(),
+        nom: ko.observable(),
         dateDebut: ko.observable(),
         dateFin: ko.observable()
     }
@@ -16,6 +17,7 @@ var ViewModel = function () {
         mail : ko.observable(),
         mdp : ko.observable(),
         entreprise : ko.observable(),
+        telephone : ko.observable(),
     }
     
 
@@ -57,12 +59,14 @@ var ViewModel = function () {
             user : {
                 nom :self.user.nom(),
                 prenom :self.user.prenom(),
-                mail :self.user.mail(),
-                mdp :self.user.mdp(),
-                entreprise :self.user.entreprise()},
+                email :self.user.mail(),
+                telephone :self.user.telephone()},
+                
             
             event : {
-                date: self.newDemande.date()},
+                quantieme: self.newDemande.date() +'T00:00:00.000Z',
+                nom: self.newDemande.nom() 
+            },
             
         };
     
