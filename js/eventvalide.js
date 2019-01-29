@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     $.getJSON('http://localhost:8080/events' , function(evs){
           
         for (i in evs){
@@ -10,15 +10,15 @@ $(document).ready(function() {
        // $('#elem').html('<tr><td>1text</td><td>2text</td><td>3text</td></tr>');
              
       
-  });
+  });*/
 
-var ViewModel = function () {
+  var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
     
     self.error = ko.observable();
     self.detail = ko.observable();
-    self.newEvent = {
+    self.newDemande = {
         date: ko.observable(),
         dateDebut: ko.observable(),
         dateFin: ko.observable()
@@ -38,7 +38,6 @@ var ViewModel = function () {
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
-    var eventValideUri = 'http://localhost:8080/eventvalide';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -53,7 +52,7 @@ var ViewModel = function () {
         });
     }
 
-    function getAllEvent() {
+    function getAllEvents() {
         ajaxHelper(eventUri, 'GET').done(function (data) {
             self.event(data);
         });
@@ -124,8 +123,8 @@ var ViewModel = function () {
 
     }
 
-     //Fetch the initial data.*/
-     getAllEvent();
+     // Fetch the initial data.*/
+     getAllEvents();
 };
 
 ko.applyBindings(new ViewModel());
