@@ -15,11 +15,13 @@
   var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
-    
+    self.eventByToto = ko.observableArray();
+    self.eventByMail = ko.observableArray();
     self.error = ko.observable();
     self.detail = ko.observable();
     self.newDemande = {
         date: ko.observable(),
+        nom: ko.observable(),
         dateDebut: ko.observable(),
         dateFin: ko.observable()
     }
@@ -30,12 +32,16 @@
         mail : ko.observable(),
         mdp : ko.observable(),
         entreprise : ko.observable(),
+        telephone : ko.observable(),
     }
-    
+    self.userMail = {
+        mail : ko.observable(),
+    }
 
 
     var eventUri ='http://localhost:8080/events';
-    var eventValidEmailUri ='http://localhost:8080/eventvalide?email=jo@jo.com';
+    var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
+    var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
@@ -58,12 +64,12 @@
             self.event(data);
         });
     }
-        function getEventsByEmail() {
-        ajaxHelper(eventValidEmailUri, 'GET').done(function (data) {
-            self.eventByEmail(data);
+    function getEventsByToto() {
+        ajaxHelper(eventValidEmailTotoUri, 'GET').done(function (data) {
+            self.eventByToto(data);
         });
     }
-
+    
     self.getDemandeDetail = function (item) {
         ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
         self.detail(data);
@@ -77,12 +83,14 @@
             user : {
                 nom :self.user.nom(),
                 prenom :self.user.prenom(),
-                mail :self.user.mail(),
-                mdp :self.user.mdp(),
-                entreprise :self.user.entreprise()},
+                email :self.user.mail(),
+                telephone :self.user.telephone()},
+                
             
             event : {
-                date: self.newDemande.date()},
+                quantieme: self.newDemande.date() +'T00:00:00.000Z',
+                nom: self.newDemande.nom() 
+            },
             
         };
     
@@ -92,7 +100,20 @@
         
     }
 
-    /**self.confirmDemande = function (item) {
+    self.getMyEvent = function () {
+        document.getElementById("eventAll").hidden = true;
+        document.getElementById("eventMail").hidden = false;
+        var email = self.userMail.mail();
+        console.log(email)
+        
+            ajaxHelper(eventValidEmail+email, 'GET').done(function (data) {
+                self.eventByMail(data);
+         
+            });
+        
+    }
+    /**
+    self.confirmDemande = function (item) {
         var confirmDemande = {
             idDemande: item.idDemande,
             dateDebut: item.dateDebut,
@@ -130,8 +151,11 @@
     }
 
      // Fetch the initial data.*/
-     getEventsByEmail();
+     getEventsByToto();
+     
      getAllEvents();
+     
 };
 
 ko.applyBindings(new ViewModel());
+
