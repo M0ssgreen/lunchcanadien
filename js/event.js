@@ -51,10 +51,12 @@
 
 
     function getEventDetail() {
+        ajaxHelper(eventByIdUri + '/' + idEv, 'GET').done(function (ev) {
+             self.event(ev);
+         });
+
         ajaxHelper(demandeUri + '?eventId=' + idEv, 'GET').done(function (demandes) {
-           console.log(demandes)
-           
-            self.detail(demandes);//(demandes);
+            self.detail(demandes);
         });
     }
 

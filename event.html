@@ -33,13 +33,12 @@
         </div>
         <table class="table">
           <thead>
-            <tr data-bind="with: detail()">
-              <th data-bind="text: event.quantieme"></th>
+            <tr>
+              <th>Date</th><th type="Date" data-bind="text: event().quantieme"></th>
             </tr>
           </thead>
           <tbody data-bind="foreach: detail()">
             <tr><td>Nom</td><td data-bind="text: user.nom"></td></tr>
-            <tr><td>Date</td><td data-bind="text: event.quantieme"></td></tr>
           </tbody>
         </table>
       </div>
