@@ -1,17 +1,3 @@
-/*$(document).ready(function() {
-    $.getJSON('http://localhost:8080/events' , function(evs){
-          
-        for (i in evs){
-            $('#elem').append('<tr><td>' + evs[i].idEvent + '</td><td>' + evs[i].dateDebut + ' à ' + evs[i].dateFin + '</td><td>' + evs[i].nbUser+ '</td><td><form  action="event.html"><input type="text" hidden="" value="evs[i].idEvent" name="idevent" ><button type="submit" value="afficher votre lunch" class="btn btn-outline-secondary">affiche</button></form></td></tr>');
-        }
-        
-      });
-    
-       // $('#elem').html('<tr><td>1text</td><td>2text</td><td>3text</td></tr>');
-             
-      
-  });*/
-
   var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
@@ -63,67 +49,13 @@
         });
     }
 
-    function getAllEvents() {
-        ajaxHelper(eventUri, 'GET').done(function (data) {
-            self.event(data);
-        });
-    }
-    function getEventsByToto() {
-        ajaxHelper(eventValidEmailTotoUri, 'GET').done(function (data) {
-            self.eventByToto(data);
-        });
-    }
-    
-    self.getDemandeDetail = function (item) {
-        ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
-        self.detail(data);
-        });
-    }
 
-
-    self.addDemande = function (formElement) {
-        console.log("demande")
-        var demande = {
-            user : {
-                nom :self.user.nom(),
-                prenom :self.user.prenom(),
-                email :self.user.mail(),
-                telephone :self.user.telephone()},
-                
-            
-            event : {
-                quantieme: self.newDemande.date() +'T00:00:00.000Z',
-                nom: self.newDemande.nom() 
-            },
-            
-        };
-    
-        ajaxHelper(eventUri, 'POST', demande).done(function (item) {
-            self.demande.push(item);
-        });
-        
-    }
-
-    self.getMyEvent = function () {
-        //document.getElementById("eventAll").hidden = true;
-        document.getElementById("eventMail").hidden = false;
-        var email = self.userMail.mail();
-        console.log(email)
-        
-            ajaxHelper(eventValidEmail+email, 'GET').done(function (data) {
-                self.eventByMail(data);
-         
-            });
-        
-    }
-
-    self.getEventDetail = function (item) {
-        ajaxHelper(demandeUri + '?eventId=' + item.id, 'GET').done(function (demandes) {
+    function getEventDetail() {
+        ajaxHelper(demandeUri + '?eventId=' + idEv, 'GET').done(function (demandes) {
            console.log(demandes)
+           
             self.detail(demandes);//(demandes);
         });
-
-        document.location.href="/lunchcanadien/event.html?id="+item.id;
     }
 
 
@@ -174,8 +106,7 @@
 
      // Fetch the initial data.*/
      //getEventsByToto();
-     
-     getAllEvents();
+     getEventDetail();
      
 };
 
