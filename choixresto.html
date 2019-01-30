@@ -42,12 +42,12 @@
               <div class="col-sm-4"></div>
               <div class="col-sm-4">
                 <div class="form-group" >
-                  <input data-bind="value:idEvent" class="form-control" id="id" type="text" placeholder="N° événement *"
+                  <input hidden data-bind="textInput:idEv " class="form-control" id="id" type="text"
                       required="required" data-validation-required-message="N° événement">
                   <p class="help-block text-danger"></p>
                 </div>
-                <div class="form-group" >
-                  <input data-bind="value:restaurant" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
+                <div class="form-group" data-bind="with: newevent" >
+                  <input data-bind="value:resto" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
                       required="required" data-validation-required-message="Nom du restaurant">
                   <p class="help-block text-danger"></p>
                 </div>
