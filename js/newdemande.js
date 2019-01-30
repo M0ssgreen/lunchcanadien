@@ -23,8 +23,10 @@ var ViewModel = function () {
     self.userMail = {
         mail : ko.observable(),
     }
+    self.availableEntreprise = ko.observableArray(),
+    self.selectedEntreprise = ko.observableArray()
 
-
+    var entrepriseUri ='http://localhost:8080/entreprises';
     var eventUri ='http://localhost:8080/events';
     //var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
@@ -42,6 +44,12 @@ var ViewModel = function () {
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
+        });
+    }
+
+    function getAllEntreprises(){
+        ajaxHelper(entrepriseUri, 'GET').done(function (data) {
+            self.availableEntreprise(data);
         });
     }
 
@@ -63,7 +71,7 @@ var ViewModel = function () {
     }
 
 
-    self.addDemande = function (formElement) {
+    self.addDemande = function () {
         console.log("addDemande")
         var demande = {
             user : {
@@ -142,6 +150,7 @@ var ViewModel = function () {
      //getEventsByToto();
      
      getAllEvents();
+     getAllEntreprises();
      
 };
 
