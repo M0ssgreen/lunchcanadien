@@ -1,6 +1,6 @@
 var ViewModel = function () {
     var self = this;
-    var idEv = getUrlVars()["id"];
+    self.idEv = getUrlVars()["id"];
     self.error = ko.observable();
     self.newadresse = {
         numero: ko.observable(),
@@ -9,7 +9,7 @@ var ViewModel = function () {
         ville: ko.observable()
     }
     self.newevent = {
-        id: ko.observable("102"),
+        id: ko.observable(),
         resto: ko.observable()
     }
     
@@ -41,7 +41,7 @@ var ViewModel = function () {
         var join = {
             event : {
                 //id: self.newevent.id(), 
-                id: self.newevent.id(),
+                id: self.idEv,
                 resto: self.newevent.resto() 
             },
             adresse : {
