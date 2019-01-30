@@ -26,14 +26,14 @@
     <div id="eventvalide"></div>
 
     <div class="container" style="margin-top: 180px;">
-    	<form data-bind="submit:getMyEvent">
+    	<form data-bind="submit:getMyEvent" style="width:100%">
         <div class="form-row align-items-center">
-          <div class="col-auto">
+          <div class="col-md-9">
             <div class="form-group" data-bind="with:userMail">
               <input data-bind="value:mail" type="email" class="form-control mb-2" id="email" placeholder="Entrez votre mail">
             </div>
           </div>
-          <div class="col-auto">
+          <div class="col-md-3">
             <button type="submit" class="btn btn-primary mb-2">Afficher vos lunchs</button>
           </div>
         </div>
@@ -52,11 +52,12 @@
             </thead>
             <tbody data-bind="foreach:eventByMail">
               <tr data-bind="click: $parent.getEventDetail">
-                <td data-bind="text: nom"></td>
+                <td data-bind="text: resto"></td>
                 <td data-bind="text: moment(quantieme).format('LL')"></td>  
               </tr>
             </tbody>
           </table>
+          
           
         <!--<table class="table table-hover table-striped" id="eventAll">
           <thead>

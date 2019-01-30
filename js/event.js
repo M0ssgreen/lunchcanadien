@@ -1,6 +1,6 @@
   var ViewModel = function () {
     var self = this;
-    self.event = ko.observableArray();
+    self.event = ko.observableArray(null);
     self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
     self.error = ko.observable();
@@ -24,6 +24,10 @@
     self.userMail = {
         mail : ko.observable(),
     }
+    self.feedback = {
+        commentaire : ko.observable(),
+        note : ko.observable()
+    }
 
     var idEv = getUrlVars()["id"];
 
@@ -35,6 +39,7 @@
     var demandeUri ='http://localhost:8080/demandes';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
+    var commentUri= 'http://localhost:8080/avis';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -69,6 +74,24 @@
         return vars;
     }
 
+    self.addComment = function () {
+        var demande = {
+                user : {
+                    email :self.user.mail()
+            },       
+            commentaire :self.feedback.commentaire(),
+            note :self.feedback.note(),
+            event:{
+                id :idEv
+            }
+            
+        };
+    
+        ajaxHelper(commentUri, 'PUT', demande).done(function (item) {
+            self.demande.push(item);
+        });
+        
+    }
     
 
      getEventDetail();
