@@ -51,8 +51,8 @@
 
 
     function getEventDetail() {
-        ajaxHelper(eventByIdUri + '/' + idEv, 'GET').done(function (event) {
-            self.event(event);
+        ajaxHelper(eventByIdUri + '/' + idEv, 'GET').done(function (ev) {
+            self.event(ev);
          });
 
         ajaxHelper(demandeUri + '?eventId=' + idEv, 'GET').done(function (demandes) {
@@ -68,6 +68,8 @@
         });
         return vars;
     }
+
+    
 
      getEventDetail();
      

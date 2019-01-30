@@ -64,7 +64,7 @@ var ViewModel = function () {
 
 
     self.addDemande = function (formElement) {
-        console.log("demande")
+        console.log("addDemande")
         var demande = {
             user : {
                 nom :self.user.nom(),
@@ -82,7 +82,10 @@ var ViewModel = function () {
     
         ajaxHelper(eventUri, 'POST', demande).done(function (item) {
             self.demande.push(item);
+            
         });
+
+        alert("Vos données ont bien été envoyées");
         
     }
 

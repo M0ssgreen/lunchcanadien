@@ -123,7 +123,7 @@
         self.detail(data);
         });
 
-        document.location.href="/lunchcanadien/event.html?id="+item.id;
+        document.location.href="/lunchcanadienfrontend/event.html?id="+item.id;
     }
 
 

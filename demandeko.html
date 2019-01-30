@@ -63,7 +63,7 @@
         <div class="col-lg-12">
           <form data-bind="submit: addDemande" name="sentMessage">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
 
                 <div class="form-group" data-bind="with: user">
                   <input data-bind="value:nom" class="form-control" id="nom" type="text" placeholder="Votre Nom *"
@@ -95,11 +95,11 @@
                 </div>-->
                
 
-           </div>
-              <div class="col-md-6">
+           
+              
                  
                 <div class="form-group" data-bind="with: newDemande">
-                  <label>Choisissez une date</label>
+                  
                   <input data-bind="value:date" class="form-control" type="date" required="required"
                     data-validation-required-message="Choisissez une date enter">
                   <p class="help-block text-danger"></p>
@@ -108,7 +108,7 @@
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div id="success"></div>
-                <button  class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
+                <button onclick="window.location.href = 'http://localhost/lunchcanadienfrontend/demandeko.html';" class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
               </div>
             </div>
           </form>
@@ -117,6 +117,7 @@
     </div>
   </section>
 
+<!--
   <div id="header"></div>
   <div class="container" style="margin-top: 100px;">
     <h2>Tous les events</h2>
@@ -128,14 +129,13 @@
           <th>Date </th>
           
 
-
         </tr>
       </thead>
       <tbody data-bind="foreach:event">
         <tr>
           <td data-bind="text: nom"></td>
           <td data-bind="text: quantieme"></td>
-          <!--<td data-bind="text: dateFin"></td>
+          <td data-bind="text: dateFin"></td>
           <td data-bind="text: status? 'Confirmée' : 'Non confirmée'"></td>
           <td><button onclick="" id="confirmDemande" type="button" class="btn btn-success" data-bind="click:$parent.confirmDemande">Confirmer</button></td>
           <td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger" data-bind="click:$parent.deleteDemande">Annuler</button></td>
@@ -180,7 +180,7 @@
   <div id="header"></div>
   <div class="container" style="margin-top: 100px;" >
 
-      <form data-bind="submit:getMyEvent">
+      <!--<form data-bind="submit:getMyEvent">
           <h2>Search event by email</h2>
           <div class="form-group" data-bind="with: userMail">
               <input data-bind="value:mail" class="form-control" id="email" type="email" placeholder="Votre adresse e-mail *"
@@ -207,7 +207,7 @@
         <tr>
           <td data-bind="text: nom"></td>
           <td data-bind="text: quantieme"></td>
-          <!--<td data-bind="text: dateFin"></td>
+          <td data-bind="text: dateFin"></td>
           <td data-bind="text: status? 'Confirmée' : 'Non confirmée'"></td>
           <td><button onclick="" id="confirmDemande" type="button" class="btn btn-success" data-bind="click:$parent.confirmDemande">Confirmer</button></td>
           <td><button onclick="" id="annulerDemande" type="button" class="btn btn-danger" data-bind="click:$parent.deleteDemande">Annuler</button></td>

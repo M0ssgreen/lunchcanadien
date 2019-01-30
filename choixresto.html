@@ -26,7 +26,7 @@
 
 <body style="padding-top: 100px;">
   <div id="header"></div>
- 
+
   <section>
     <div class="container">
       <div class="row">
@@ -41,41 +41,41 @@
             <div class="row">
               <div class="col-sm-4"></div>
               <div class="col-sm-4">
-                <div class="form-group" >
-                  <input hidden data-bind="textInput:idEv " class="form-control" id="id" type="text"
-                      required="required" data-validation-required-message="N° événement">
+                <div class="form-group">
+                  <input hidden data-bind="textInput:idEv " class="form-control" id="id" type="text" required="required"
+                    data-validation-required-message="N° événement">
                   <p class="help-block text-danger"></p>
                 </div>
-                <div class="form-group" data-bind="with: newevent" >
+                <div class="form-group" data-bind="with: newevent">
                   <input data-bind="value:resto" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
-                      required="required" data-validation-required-message="Nom du restaurant">
+                    required="required" data-validation-required-message="Nom du restaurant">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group" data-bind="with: newadresse">
                   <input data-bind="value:numero" class="form-control" id="numero" type="text" placeholder="Numero *"
-                      required="required" data-validation-required-message="Numéro">
+                    required="required" data-validation-required-message="Numéro">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group" data-bind="with: newadresse">
-                  <input data-bind="value:rue" class="form-control" id="rue" type="text" placeholder="Rue *"
-                      required="required" data-validation-required-message="Rue">
+                  <input data-bind="value:rue" class="form-control" id="rue" type="text" placeholder="Rue *" required="required"
+                    data-validation-required-message="Rue">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group" data-bind="with: newadresse">
-                    <input data-bind="value:codePostal" class="form-control" id="codepostal" type="text" placeholder="Code postal *"
-                      required="required" data-validation-required-message="Code postal ">
-                    <p class="help-block text-danger"></p>
+                  <input data-bind="value:codePostal" class="form-control" id="codepostal" type="text" placeholder="Code postal *"
+                    required="required" data-validation-required-message="Code postal ">
+                  <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group" data-bind="with: newadresse">
-                    <input data-bind="value:ville" class="form-control" id="ville" type="text" placeholder="Ville *"
-                      required="required" data-validation-required-message="Ville">
-                    <p class="help-block text-danger"></p>
+                  <input data-bind="value:ville" class="form-control" id="ville" type="text" placeholder="Ville *"
+                    required="required" data-validation-required-message="Ville">
+                  <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div id="success"></div>
-                <button  class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
+                <button onclick="window.location.href = 'http://localhost/lunchcanadienfrontend/index.html';" class="btn btn-primary btn-xl text-uppercase"  type="submit">Envoyer</button>
               </div>
             </div>
           </form>

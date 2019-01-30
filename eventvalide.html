@@ -46,13 +46,13 @@
         <table class="table table-hover table-striped" hidden id="eventMail">
             <thead>
               <tr>
-                <th>Lunchs</th>
+                <th>Restaurant</th>
                 <th>Date </th>
               </tr>
             </thead>
             <tbody data-bind="foreach:eventByMail">
               <tr data-bind="click: $parent.getEventDetail">
-                <td data-bind="text: nom"></td>
+                <td data-bind="text: resto "></td>
                 <td data-bind="text: moment(quantieme).format('LL')"></td>  
               </tr>
             </tbody>

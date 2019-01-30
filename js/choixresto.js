@@ -37,7 +37,8 @@ var ViewModel = function () {
     }
 
     self.addResto = function (formElement) {
-        console.log("resto")
+        console.log("resto");
+        alert("Vos données ont bien été envoyées");
         var join = {
             event : {
                 //id: self.newevent.id(), 
@@ -56,6 +57,8 @@ var ViewModel = function () {
         ajaxHelper(eventUri, 'PUT', join).done(function (item) {
             self.join.push(item);
         });
+        
+        
     }
 };
 
