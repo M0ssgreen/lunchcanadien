@@ -51,8 +51,8 @@
 
 
     function getEventDetail() {
-        ajaxHelper(eventByIdUri + '/' + idEv, 'GET').done(function (ev) {
-             self.event(ev);
+        ajaxHelper(eventByIdUri + '/' + idEv, 'GET').done(function (event) {
+            self.event(event);
          });
 
         ajaxHelper(demandeUri + '?eventId=' + idEv, 'GET').done(function (demandes) {
@@ -68,46 +68,7 @@
         });
         return vars;
     }
-    /**
-    self.confirmDemande = function (item) {
-        var confirmDemande = {
-            idDemande: item.idDemande,
-            dateDebut: item.dateDebut,
-            dateFin: item.dateFin,
-            status: "true",
-            user : {id :item.user.id}
-        };
 
-        ajaxHelper(validdemandeUri+'/'+item.idDemande, 'PUT', confirmDemande).done(function (item) {
-            var pos = self.demande.indexOf(item); //Récupérer l'id dans la liste demande
-            var pos2 = pos-1;
-            self.demande.splice(pos2, 1); //Retirer 1 élément à la position pos2
-            self.demande.push(item); //réafficher l'élément 
-            
-             
-            
-            
-        });
-
-    }
-
-    self.deleteDemande = function (item){
-
-        ajaxHelper(supprdemandeUri+'/'+item.idDemande, 'DELETE', confirmDemande).done(function (demande) {
-                var pos = self.demande.indexOf(item);
-                var pos2 = pos-1;
-                self.demande.splice(pos2,1);
-                //self.demande.remove(function(demande){
-                  //  return true;
-                //});
-                
-            });
-        
-
-    }
-
-     // Fetch the initial data.*/
-     //getEventsByToto();
      getEventDetail();
      
 };
