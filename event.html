@@ -41,6 +41,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h2 class="panel-title" data-bind="text: moment(event().quantieme).format('LL')"></h2>
+            <h3 data-bind="text: event().resto"></h3>
+            <h3 data-bind="text: event().adresse.rue"></h3>
           </div>
           <table class="table">
             <thead>
@@ -48,6 +50,7 @@
             </thead>
             <tbody data-bind="foreach: detail()">
               <tr><td data-bind="text: user.nom"></td></tr>
+              <tr></tr>
             </tbody>
           </table>
         </div>
