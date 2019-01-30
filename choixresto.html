@@ -36,59 +36,48 @@
         </div>
       </div>
       <div class="row">
-        <div class="container">
+        <div class="col-lg-12">
           <form data-bind="submit: addResto" name="sentMessage">
-
-              <div class="row">
-                <div class="container col-md-4 col-sm-3"></div>
-                <div class="container col-md-4 col-sm-6">
-                  <div class="form-group" data-bind="with: newEvent">
-                    <input data-bind="value:id" class="form-control" id="id" type="text" placeholder="N° événement *"
+            <div class="row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4">
+                <div class="form-group" >
+                  <input data-bind="value:idEvent" class="form-control" id="id" type="text" placeholder="N° événement *"
                       required="required" data-validation-required-message="N° événement">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group" data-bind="with: newEvent">
-                    <input data-bind="value:resto" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group" >
+                  <input data-bind="value:restaurant" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
                       required="required" data-validation-required-message="Nom du restaurant">
-                    <p class="help-block text-danger"></p>
-                  </div>
+                  <p class="help-block text-danger"></p>
                 </div>
-                <div class="container col-md-4 col-sm-3"></div>
-              </div>
-              <div class="row">
-                <div class="container col-md-2 col-sm-1"></div>
-                <div class="container col-md-4 col-sm-5">
-                  <div class="form-group" data-bind="with: adresse">
-                    <input data-bind="value:numero" class="form-control" id="numero" type="text" placeholder="Numero *"
+                <div class="form-group" data-bind="with: newadresse">
+                  <input data-bind="value:numero" class="form-control" id="numero" type="text" placeholder="Numero *"
                       required="required" data-validation-required-message="Numéro">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group" data-bind="with: adresse">
-                    <input data-bind="value:rue" class="form-control" id="rue" type="text" placeholder="Rue *"
-                      required="required" data-validation-required-message="Rue">
-                    <p class="help-block text-danger"></p>
-                  </div>
+                  <p class="help-block text-danger"></p>
                 </div>
-                <div class="container col-md-4 col-sm-5">
-                  <div class="form-group" data-bind="with: adresse">
+                <div class="form-group" data-bind="with: newadresse">
+                  <input data-bind="value:rue" class="form-control" id="rue" type="text" placeholder="Rue *"
+                      required="required" data-validation-required-message="Rue">
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group" data-bind="with: newadresse">
                     <input data-bind="value:codePostal" class="form-control" id="codepostal" type="text" placeholder="Code postal *"
                       required="required" data-validation-required-message="Code postal ">
                     <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group" data-bind="with: adresse">
+                </div>
+                <div class="form-group" data-bind="with: newadresse">
                     <input data-bind="value:ville" class="form-control" id="ville" type="text" placeholder="Ville *"
                       required="required" data-validation-required-message="Ville">
                     <p class="help-block text-danger"></p>
-                  </div>
                 </div>
-                <div class="container col-md-2 col-sm-1"></div>
               </div>
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div id="success"></div>
-                  <button  class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
-                </div>
+                <button  class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyer</button>
               </div>
+            </div>
           </form>
         </div>
       </div>
