@@ -8,10 +8,10 @@ var ViewModel = function () {
     }
     self.event = {
         id:ko.observable(),
-        resto : ko.observable(),
+        resto : ko.observable()
     }
 
-    var eventUri ='http://localhost:8080/events';
+    var eventUri ='http://localhost:8080/';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -48,4 +48,6 @@ var ViewModel = function () {
   
     
 }
-}
+};
+
+ko.applyBindings(new ViewModel());
