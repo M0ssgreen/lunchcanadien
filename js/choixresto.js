@@ -1,5 +1,6 @@
 var ViewModel = function () {
     var self = this;
+    var idEv = getUrlVars()["id"];
     self.error = ko.observable();
     self.newadresse = {
         numero: ko.observable(),
@@ -7,8 +8,11 @@ var ViewModel = function () {
         codePostal: ko.observable(),
         ville: ko.observable()
     }
-    self.idEvent = ko.observable();
-    self.restaurant = ko.observable();
+    self.newevent = {
+        id: ko.observable("102"),
+        resto: ko.observable()
+    }
+    
 
     var eventUri ='http://localhost:8080/event/resto';
 
@@ -24,24 +28,33 @@ var ViewModel = function () {
             self.error(errorThrown);
         });
     }
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
 
     self.addResto = function (formElement) {
         console.log("resto")
-        var event = {
-            id: self.idEvent(), 
-            resto: self.restaurant() ,
-            adresse : {
-                numero :self.newadresse.numero(),
-                rue :self.newadresse.rue(),
-                codePostal :self.newadresse.codePostal(),
-                ville :self.newadresse.ville()
+        var join = {
+            event : {
+                //id: self.newevent.id(), 
+                id: self.newevent.id(),
+                resto: self.newevent.resto() 
             },
-        };
-            
+            adresse : {
+                numero : self.newadresse.numero(),
+                rue : self.newadresse.rue(),
+                codePostal : self.newadresse.codePostal(),
+                ville : self.newadresse.ville()
+            }
+        } ;  
         
     
-        ajaxHelper(eventUri, 'PUT', event).done(function (item) {
-            self.event.push(item);
+        ajaxHelper(eventUri, 'PUT', join).done(function (item) {
+            self.join.push(item);
         });
     }
 };
