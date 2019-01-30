@@ -42,12 +42,13 @@
               <div class="row">
                 <div class="container col-md-4 col-sm-3"></div>
                 <div class="container col-md-4 col-sm-6">
-                  <p>N° événement : </p>
-                  <div class="form-group" data-bind="with: event">
-                    <div data-bind="value:id" id=""></div>
+                  <div class="form-group" data-bind="with: newEvent">
+                    <input data-bind="value:id" class="form-control" id="id" type="text" placeholder="N° événement *"
+                      required="required" data-validation-required-message="N° événement">
+                    <p class="help-block text-danger"></p>
                   </div>
-                  <div class="form-group" data-bind="with: event">
-                    <input data-bind="value:resto" class="form-control" id="resto" type="text" placeholder="Restaurant *"
+                  <div class="form-group" data-bind="with: newEvent">
+                    <input data-bind="value:resto" class="form-control" id="resto" type="text" placeholder="Nom du restaurant *"
                       required="required" data-validation-required-message="Nom du restaurant">
                     <p class="help-block text-danger"></p>
                   </div>
@@ -70,7 +71,7 @@
                 </div>
                 <div class="container col-md-4 col-sm-5">
                   <div class="form-group" data-bind="with: adresse">
-                    <input data-bind="value:codepostal" class="form-control" id="codepostal" type="text" placeholder="Code postal *"
+                    <input data-bind="value:codePostal" class="form-control" id="codepostal" type="text" placeholder="Code postal *"
                       required="required" data-validation-required-message="Code postal ">
                     <p class="help-block text-danger"></p>
                   </div>

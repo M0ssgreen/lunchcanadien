@@ -1,17 +1,17 @@
 var ViewModel = function () {
     var self = this;
-    self.newAdresse = {
+    self.adresse = {
         numero: ko.observable(),
         rue: ko.observable(),
         codePostal: ko.observable(),
         ville: ko.observable()
     }
-    self.event = {
+    self.newEvent = {
         id:ko.observable(),
         resto : ko.observable()
     }
 
-    var eventUri ='http://localhost:8080/';
+    var eventUri ='http://localhost:8080/event/resto';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -27,27 +27,22 @@ var ViewModel = function () {
     }
     self.addResto = function (formElement) {
         console.log("resto")
-        var choixResto = {
+        var event = {
+            id: self.newEvent.id(), 
+            resto: self.newEvent.resto() ,
             adresse : {
-                numero :self.newAdresse.numero(),
-                rue :self.newAdresse.rue(),
-                codePostal :self.newAdresse.codepostal(),
-                ville :self.newAdresse.ville()},
-                
+                numero :self.adresse.numero(),
+                rue :self.adresse.rue(),
+                codePostal :self.adresse.codePostal(),
+                ville :self.adresse.ville()}
+            };
             
-            event : {
-                id: self.event.id(), 
-                resto: self.event.resto() 
-            },
-            
-        };
+        
     
-        ajaxHelper(eventUri, 'POST', choixResto).done(function (item) {
-            self.choixResto.push(item);
+        ajaxHelper(eventUri, 'PUT', event).done(function (item) {
+            self.event.push(item);
         });
-  
-    
-}
+    }
 };
 
 ko.applyBindings(new ViewModel());
