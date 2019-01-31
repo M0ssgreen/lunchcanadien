@@ -4,6 +4,7 @@ var ViewModel = function () {
     //self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
     self.error = ko.observable();
+    self.error1 = ko.observable();
     self.detail = ko.observable();
     self.newDemande = {
         date: ko.observable(),
@@ -36,6 +37,25 @@ var ViewModel = function () {
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
 
+    function ajaxHelper1(uri, method, data) {
+        self.error1(''); // Clear error message
+        return $.ajax({
+            type: method,
+            url: uri,
+            dataType: 'json',
+            contentType: 'application/json',
+            data: data ? JSON.stringify(data) : null
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            self.error1(errorThrown);
+           if (jqXHR.status == '500'	){
+            
+            alert('Erreur : Vous avez déjà proposé un lunch pour cette date.')
+           }else{
+            alert('Ok : Vous allez recevoir un mail de confirmation')
+           }
+        });
+    }
+
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
         return $.ajax({
@@ -48,18 +68,12 @@ var ViewModel = function () {
             self.error(errorThrown);
         });
     }
-/** 
-    function getAllEntreprises(){
+
+   function getAllEntreprises(){
         ajaxHelper(entrepriseUri, 'GET').done(function (data) {
             self.availableEntreprise(data);
         });
     }
-
-    function getIdEntreprises(data){
-        ajaxHelper(idEntrepriseUri+data, 'GET').done(function (data) {
-            self.idEntreprise(data);
-        });
-    }*/
 
    /* function getAllEvents() {
         ajaxHelper(eventUri, 'GET').done(function (data) {
@@ -89,8 +103,8 @@ var ViewModel = function () {
                 prenom :self.user.prenom(),
                 email :self.user.mail(),
                 telephone :self.user.telephone()},
-                //entreprise : 10326,
-            //entreprise : {nom:self.idEntreprise()},
+                entreprise : {nom:self.user.entreprise()},
+            
             event : {
                 quantieme: self.newDemande.date() +'T00:00:00.000Z',
                 nom: self.newDemande.nom() 
@@ -98,12 +112,12 @@ var ViewModel = function () {
             
         };
     
-        ajaxHelper(eventUri, 'POST', demande).done(function (item) {
-            //self.demande.push(item);
+        ajaxHelper1(eventUri, 'POST', demande).done(function (item) {
             
+                self.demande.push(item);
         });
 
-        alert("Vos données ont bien été envoyées");
+        //alert("Vos données ont bien été envoyées");
         
     }
 
@@ -160,8 +174,7 @@ var ViewModel = function () {
      //getEventsByToto();
      
      //getAllEvents();
-     //getAllEntreprises();
-     
+     getAllEntreprises();
      
 };
 
