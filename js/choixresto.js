@@ -26,8 +26,14 @@ var ViewModel = function () {
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
-        });
-    }
+            if (jqXHR.status == '500'	){
+            
+                alert('Erreur : Vous avez déjà proposé un lunch pour cette date.')
+               }else{
+                alert('Ok : Vous allez recevoir un mail de confirmation')
+               }
+            });
+        }
     function getUrlVars() {
         var vars = {};
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
