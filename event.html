@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Lunch validé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/rating.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -38,7 +37,7 @@
             contentType: 'application/json',
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            self.error(errorThrown);
+            
         });
     }
       var geocoder;
@@ -129,22 +128,95 @@
         </div>-->
       </div>
 
-      <div class="row" style="max-width: 1140px;  margin-left: auto; margin-right: auto;">
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+  
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function(){
+          var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+        
+          // Now highlight all the stars that's not after the current hovered star
+          $(this).parent().children('li.star').each(function(e){
+            if (e < onStar) {
+              $(this).addClass('hover');
+            }
+            else {
+              $(this).removeClass('hover');
+            }
+          });
+          
+        }).on('mouseout', function(){
+          $(this).parent().children('li.star').each(function(e){
+            $(this).removeClass('hover');
+          });
+        });
+        
+        
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function(){
+          var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+          var stars = $(this).parent().children('li.star');
+          
+          for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass('selected');
+          }
+          
+          for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass('selected');
+          }
+          
+          // JUST RESPONSE (Not needed)
+          var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+          console.log(ratingValue)
+          /*var msg = "";
+          if (ratingValue > 1) {
+              msg = "Thanks! You rated this " + ratingValue + " stars.";
+          }
+          else {
+              msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+          }
+          responseMessage(msg);*/
+          
+        });
+      });
+      </script>
+      <div class="row" style="max-width: 1140px;  margin-left: auto; margin-right: auto; margin-top: 100px">
           <form data-bind="submit: addComment" id="commentForm" name="sentComment" novalidate="novalidate">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-group" data-bind="with: user">
                     <input data-bind="value:mail" class="form-control" id="email" type="email" placeholder="Votre mail *" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-bind="with: feedback">
-                    <textarea data-bind="value: commentaire" class="form-control" id="message" placeholder="Votre commentaire *" required="required" data-validation-required-message="Please enter a message."></textarea>
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group" data-bind="with: feedback">
-                      <textarea data-bind="value: note" class="form-control" id="message" placeholder="Votre commentaire *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                <div class="col-md-12">
+                  
+                  <!--<div class="form-group" data-bind="with: feedback">
+                      <textarea data-bind="value: note" class="form-control" id="message" placeholder="Votre note *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                      <p class="help-block text-danger"></p>
+                    </div>-->
+                    <div class='rating-stars text-center'>
+                      <ul id='stars'>
+                        <li class='star' title='Poor' data-value='1'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="form-group" data-bind="with: feedback">
+                      <textarea rows="5" data-bind="value: commentaire" class="form-control" id="message" placeholder="Votre commentaire *" required="required" data-validation-required-message="Please enter a message."></textarea>
                       <p class="help-block text-danger"></p>
                     </div>
                 </div>

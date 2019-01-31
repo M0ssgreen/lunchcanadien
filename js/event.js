@@ -6,6 +6,7 @@
     self.error = ko.observable();
     self.detail = ko.observableArray();
     self.demandes = ko.observableArray();
+    self.selectedItems = ko.observableArray();
     self.newDemande = {
         date: ko.observable(),
         nom: ko.observable(),
@@ -29,8 +30,13 @@
         note : ko.observable()
     }
 
-    var idEv = getUrlVars()["id"];
 
+    var onStar = parseInt($('#stars li').data('value'), 10); // The star currently selected
+    var stars = $('#stars li').parent().children('li.star');
+
+    var idEv = getUrlVars()["id"];
+    var ratingValue;
+    
 
     var eventUri ='http://localhost:8080/events';
     var eventByIdUri ='http://localhost:8080/event';
@@ -39,7 +45,7 @@
     var demandeUri ='http://localhost:8080/demandes';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
-    var commentUri= 'http://localhost:8080/avis';
+    var commentUri= 'http://localhost:8080/demandes/avis';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -74,22 +80,29 @@
         return vars;
     }
 
+    function getRate(){
+        for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass('selected');
+          }
+        ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+    }
     self.addComment = function () {
+        getRate()
+        console.log(ratingValue)
         var demande = {
-                user : {
-                    email :self.user.mail()
+            user : {
+                email :self.user.mail()
             },       
             commentaire :self.feedback.commentaire(),
-            note :self.feedback.note(),
+            note :ratingValue,
             event:{
                 id :idEv
             }
             
         };
     
-        ajaxHelper(commentUri, 'PUT', demande).done(function (item) {
-            self.demande.push(item);
-        });
+        ajaxHelper(commentUri, 'PUT', demande) {
+        };
         
     }
     
