@@ -6,6 +6,7 @@
     <title>Lunch validé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -59,22 +60,23 @@
           </table>
           
           
-        <!--<table class="table table-hover table-striped" id="eventAll">
+        <table class="table table-hover table-striped" id="eventAll">
           <thead>
             <tr>
-              <th>Lunchs</th>
+              <th>Restaurant</th>
               <th>Date </th>
             </tr>
           </thead>
           <tbody data-bind="foreach:event">
             <tr data-bind="click: $parent.getEventDetail">
-              <td data-bind="text: nom"></td>
-              <td data-bind="text: quantieme"></td> 
+              <td data-bind="text: resto"></td>
+              <td data-bind="text: quantieme"></td>
+              <td><span class="glyphicon glyphicon-user"></span></td> 
             </tr>
           </tbody>
         </table>
         
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h2 class="panel-title">Detail</h2>
