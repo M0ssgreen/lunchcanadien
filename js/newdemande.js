@@ -52,6 +52,8 @@ var ViewModel = function () {
             alert('Erreur : Vous avez déjà proposé un lunch pour cette date.')
            }else{
             alert('Ok : Vous allez recevoir un mail de confirmation')
+            window.location = 'http://localhost/lunchcanadienfrontend/index.html';
+
            }
         });
     }
