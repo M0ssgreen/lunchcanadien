@@ -1,5 +1,28 @@
+var optionModel = function(id,name){
+    var self = this;
+    self.id = id;
+    self.name = name;
+}
+
 var ViewModel = function () {
     var self = this;
+
+    
+        var self = this;
+        self.options = [
+            new optionModel(100,"Solutec"),
+            new optionModel(101,"Solutec Lyon"),
+            new optionModel(102,"Miam"),
+            
+        ];
+        self.selectedOptionId = ko.observable(self.options[0].id);
+        self.selectedOption = ko.computed(function(){
+            return ko.utils.arrayFirst(self.options, function(item){
+                return item.id === self.selectedOptionId();
+            });
+        });
+    
+
     self.event = ko.observableArray();
     //self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
@@ -104,8 +127,8 @@ var ViewModel = function () {
                 nom :self.user.nom(),
                 prenom :self.user.prenom(),
                 email :self.user.mail(),
-                telephone :self.user.telephone()},
-                entreprise : {nom:self.user.entreprise()},
+                telephone :self.user.telephone(),
+                id :self.selectedOptionId()},
             
             event : {
                 quantieme: self.newDemande.date() +'T00:00:00.000Z',
