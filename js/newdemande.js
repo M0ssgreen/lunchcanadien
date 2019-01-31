@@ -76,6 +76,7 @@ var ViewModel = function () {
            }else{
             alert('Ok : Vous allez recevoir un mail de confirmation')
             window.location = 'http://localhost/lunchcanadienfrontend/index.html';
+            
 
            }
         });

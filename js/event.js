@@ -64,6 +64,7 @@
                 alert('Erreur : Adresse e-mail invalide')
                }else{
                 alert('Votre commentaire a bien été envoyé')
+                
                }
         });
     }
