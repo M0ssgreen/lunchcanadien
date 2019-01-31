@@ -6,7 +6,8 @@
     <title>Lunch validé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -26,70 +27,84 @@
 	<input type="button" id="decl" value="Déclenche notre API" />
     <div id="eventvalide"></div>
 
-    <div class="container" style="margin-top: 180px;">
-    	<form data-bind="submit:getMyEvent" style="width:100%">
-        <div class="form-row align-items-center">
-          <div class="col-md-9">
-            <div class="form-group" data-bind="with:userMail">
-              <input data-bind="value:mail" type="email" class="form-control mb-2" id="email" placeholder="Entrez votre mail">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <button type="submit" class="btn btn-primary mb-2">Afficher vos lunchs</button>
-          </div>
-        </div>
-      </form>
+    <div style="margin-top: 180px;">
+    	
       
 
 
-        <h2>Lunchs</h2>
-        
-        <table class="table table-hover table-striped" hidden id="eventMail">
-            <thead>
-              <tr>
-                <th>Restaurant</th>
-                <th>Date </th>
-              </tr>
-            </thead>
-            <tbody data-bind="foreach:eventByMail">
-              <tr data-bind="click: $parent.getEventDetail">
-                <td data-bind="text: resto"></td>
-                <td data-bind="text: moment(quantieme).format('LL')"></td>  
-              </tr>
-            </tbody>
-          </table>
-          
-          
-        <table class="table table-hover table-striped" id="eventAll">
-          <thead>
-            <tr>
-              <th>Restaurant</th>
-              <th>Date </th>
-            </tr>
-          </thead>
-          <tbody data-bind="foreach:event">
-            <tr data-bind="click: $parent.getEventDetail">
-              <td data-bind="text: resto"></td>
-              <td data-bind="text: quantieme"></td>
-              <td><span class="glyphicon glyphicon-user"></span></td> 
-            </tr>
-          </tbody>
-        </table>
-        
-        <!--<div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h2 class="panel-title">Detail</h2>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <form data-bind="submit:getMyEvent" style="width:100%">
+                    <div class="row align-items-center">
+                      <div class="col-md-9">
+                        <div class="" data-bind="with:userMail">
+                          <input data-bind="value:mail" type="email" class="form-control" id="email" placeholder="Entrez votre mail">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary btn-block">Afficher vos lunchs</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+          </div>
+      </div>
+
+        <div class="container mt-4 mb-3">
+            <div class="row">
+              <div class="col-sm-12">
+                  <h2>Lunchs</h2>
               </div>
-              <table class="table">
-                  <tbody data-bind="foreach: detail()">
-                <tr><td>Nom</td><td data-bind="text: user.nom"></td></tr>
-                <tr><td>Date</td><td data-bind="text: event.quantieme"></td></tr>
-                  </tbody>
-              </table>
             </div>
         </div>
-         -->   
+        <div class="container" hidden id="eventMail">
+            <div class="row" data-bind="foreach:eventByMail">
+              <div class="col-sm-6">
+                  <div class="card  mb-4" data-bind="click: $parent.getEventDetail" style="cursor:pointer">
+                      <div class="card-body">
+                        <h5 class="card-title" data-bind="text: resto">Card title</h5>
+                        <p class="card-text" data-bind="text: moment(quantieme).format('LL')"></p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col" style="font-size: 20px;">
+                              <i class="fas fa-users"></i>&nbsp;
+                              <small class="text-muted" data-bind="text: demandes.length">Last updated 3 mins ago</small>
+                          </div>
+                          <div class="col"></div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+             
+              </div>
+        </div>
+
+
+        
+        <div class="container" id="eventAll">
+            <div class="row" data-bind="foreach:event">
+              <div class="col-sm-6">
+                  <div class="card  mb-4" data-bind="click: $parent.getEventDetail" style="cursor:pointer">
+                      <div class="card-body">
+                        <h5 class="card-title" data-bind="text: resto">Card title</h5>
+                        <p class="card-text" data-bind="text: moment(quantieme).format('LL')"></p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col" style="font-size: 20px;">
+                              <i class="fas fa-users"></i>&nbsp;
+                              <small class="text-muted" data-bind="text: demandes.length">Last updated 3 mins ago</small>
+                          </div>
+                          <div class="col"></div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+             
+              </div>
+        </div>
 
     </div>
    <div id="footer"></div>

@@ -20,6 +20,7 @@
     self.error = ko.observable();
     self.detail = ko.observableArray();
     self.demandes = ko.observableArray();
+    self.numberOfParticipants = ko.observable(0);
     self.newDemande = {
         date: ko.observable(),
         nom: ko.observable(),
@@ -40,7 +41,8 @@
     }
 
     var idEv = getUrlVars()["id"];
-
+    var idEvent;
+    
 
     var eventUri ='http://localhost:8080/events';
     var eventByIdUri ='http://localhost:8080/event';
@@ -65,12 +67,15 @@
     }
 
     function getAllEvents() {
+        var events = null;
         ajaxHelper(eventUri, 'GET').done(function (data) {
             self.event(data);
-            ajaxHelper(demandeUri + '?eventId=' + data.id, 'GET').done(function (demandes) {
-                self.petitdetail(demandes);
-                console.log(data.id)
-            });
+            events = data;
+        });
+        
+        ajaxHelper(demandeUri + '?eventId=' + idEvent, 'GET').done(function (demandes) {
+            self.petitdetail(demandes);
+            self.numberOfParticipants = demandes.length;
         });
         
     }
