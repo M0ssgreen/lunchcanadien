@@ -59,6 +59,12 @@
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
+            if (jqXHR.status == '500'	){
+            
+                alert('Erreur : Adresse e-mail invalide')
+               }else{
+                alert('Votre commentaire a bien été envoyé')
+               }
         });
     }
 

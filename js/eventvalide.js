@@ -63,6 +63,8 @@
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
+            
+            
         });
     }
 
