@@ -241,14 +241,100 @@
                       <div class="col-sm-12"  data-bind="if: commentaire!=null">
                           <div class="card  mb-4">
                               <div class="card-body">
-                                <p class="card-text"data-bind="text: commentaire"></p>
+                                <p class="card-text h3"data-bind="text: commentaire"></p>
                               </div>
                               <div class="card-footer">
                                 <div class="row">
                                   <div class="col" style="font-size: 20px;">
-                                      <small class="text-muted" data-bind="text: note">Last updated 3 mins ago</small>
+                                      <div class='rating-stars text-center' style="text-align:center">
+                                          <ul id='stars' data-bind="if: note == 1">
+                                            <li class='star selected' title='Poor' data-value='1'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Fair' data-value='2'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Good' data-value='3'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Excellent' data-value='4'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='WOW!!!' data-value='5'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                          </ul>
+                                        
+                                        <ul id='stars' data-bind="if: note == 2">
+                                            <li class='star selected' title='Poor' data-value='1'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star selected' title='Fair' data-value='2'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Good' data-value='3'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Excellent' data-value='4'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='WOW!!!' data-value='5'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                          </ul>
+                                          <ul id='stars' data-bind="if: note == 3">
+                                              <li class='star selected' title='Poor' data-value='1'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                              </li>
+                                              <li class='star selected' title='Fair' data-value='2'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                              </li>
+                                              <li class='star selected' title='Good' data-value='3'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                              </li>
+                                              <li class='star' title='Excellent' data-value='4'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                              </li>
+                                              <li class='star' title='WOW!!!' data-value='5'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                              </li>
+                                            </ul>
+                                            <ul id='stars' data-bind="if: note == 4">
+                                                <li class='star selected' title='Poor' data-value='1'>
+                                                  <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star selected' title='Fair' data-value='2'>
+                                                  <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star selected' title='Good' data-value='3'>
+                                                  <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star selected' title='Excellent' data-value='4'>
+                                                  <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='WOW!!!' data-value='5'>
+                                                  <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                              </ul>
+                                        <ul id='stars' data-bind="if: note == 5">
+                                            <li class='star selected' title='Poor' data-value='1'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star selected' title='Fair' data-value='2'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star selected' title='Good' data-value='3'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star selected' title='Excellent' data-value='4'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star selected' title='WOW!!!' data-value='5'>
+                                              <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                          </ul>
+                                        </div>
                                   </div>
-                                  <div class="col"></div>
                                 </div>
                               </div>
                             </div>
