@@ -24,9 +24,11 @@ var ViewModel = function () {
         mail : ko.observable(),
     }
     self.availableEntreprise = ko.observableArray(),
-    self.selectedEntreprise = ko.observableArray()
+    self.nomEntreprise = ko.observableArray()
+    //self.idEntreprise = getIdEntreprises(self.availableEntreprise)
 
     var entrepriseUri ='http://localhost:8080/entreprises';
+    var idEntrepriseUri='http://localhost:8080/entreprisechoix/';
     var eventUri ='http://localhost:8080/events';
     //var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
@@ -46,10 +48,16 @@ var ViewModel = function () {
             self.error(errorThrown);
         });
     }
-
-   /** function getAllEntreprises(){
+/** 
+    function getAllEntreprises(){
         ajaxHelper(entrepriseUri, 'GET').done(function (data) {
             self.availableEntreprise(data);
+        });
+    }
+
+    function getIdEntreprises(data){
+        ajaxHelper(idEntrepriseUri+data, 'GET').done(function (data) {
+            self.idEntreprise(data);
         });
     }*/
 
@@ -73,14 +81,16 @@ var ViewModel = function () {
 
     self.addDemande = function () {
         console.log("addDemande")
+        //getIdEntreprises(self.availableEntreprise)
         var demande = {
             user : {
+                //id:10,
                 nom :self.user.nom(),
                 prenom :self.user.prenom(),
                 email :self.user.mail(),
                 telephone :self.user.telephone()},
-                entreprise : {nom:self.user.entreprsie()},
-            
+                //entreprise : 10326,
+            //entreprise : {nom:self.idEntreprise()},
             event : {
                 quantieme: self.newDemande.date() +'T00:00:00.000Z',
                 nom: self.newDemande.nom() 
@@ -89,7 +99,7 @@ var ViewModel = function () {
         };
     
         ajaxHelper(eventUri, 'POST', demande).done(function (item) {
-            self.demande.push(item);
+            //self.demande.push(item);
             
         });
 
@@ -149,8 +159,9 @@ var ViewModel = function () {
      // Fetch the initial data.*/
      //getEventsByToto();
      
-     getAllEvents();
-     getAllEntreprises();
+     //getAllEvents();
+     //getAllEntreprises();
+     
      
 };
 
