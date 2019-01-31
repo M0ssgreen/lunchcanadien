@@ -46,7 +46,7 @@
     var eventByIdUri ='http://localhost:8080/event';
     var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
-    var demandeUri ='http://localhost:8080/demandes';
+    var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
 
@@ -118,12 +118,12 @@
     }
 
     self.getEventDetail = function (item) {
-        ajaxHelper(demandeUri + '?eventId=' + item.id, 'GET').done(function (demandes) {
-           console.log(demandes)
-            self.detail(demandes);//(demandes);
+        ajaxHelper()
+        ajaxHelper(eventByIdUri + '/' + item.id, 'GET').done(function (data) {
+        self.detail(data);
         });
 
-        document.location.href="/lunchcanadien/event.html?id="+item.id;
+        document.location.href="/lunchcanadienfrontend/event.html?id="+item.id;
     }
 
 
@@ -173,7 +173,7 @@
     }
 
      // Fetch the initial data.*/
-     //getEventsByToto();
+     getEventsByToto();
      
      getAllEvents();
      
