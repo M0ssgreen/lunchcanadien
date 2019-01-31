@@ -47,28 +47,28 @@ var ViewModel = function () {
         });
     }
 
-    function getAllEntreprises(){
+   /** function getAllEntreprises(){
         ajaxHelper(entrepriseUri, 'GET').done(function (data) {
             self.availableEntreprise(data);
         });
-    }
+    }*/
 
-    function getAllEvents() {
+   /* function getAllEvents() {
         ajaxHelper(eventUri, 'GET').done(function (data) {
             self.event(data);
         });
-    }
+    }*/
     /*function getEventsByToto() {
         ajaxHelper(eventValidEmailTotoUri, 'GET').done(function (data) {
             self.eventByToto(data);
         });
     }*/
     
-    self.getDemandeDetail = function (item) {
+    /** self.getDemandeDetail = function (item) {
         ajaxHelper(demandeUri + '/' + item.id, 'GET').done(function (data) {
         self.detail(data);
         });
-    }
+    }*/
 
 
     self.addDemande = function () {
@@ -79,7 +79,7 @@ var ViewModel = function () {
                 prenom :self.user.prenom(),
                 email :self.user.mail(),
                 telephone :self.user.telephone()},
-                
+                entreprise : {nom:self.user.entreprsie()},
             
             event : {
                 quantieme: self.newDemande.date() +'T00:00:00.000Z',

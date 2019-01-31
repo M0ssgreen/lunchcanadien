@@ -102,38 +102,60 @@
      </style>
 
 </head>
-<body id="page-top" onload="initialize()" style="margin:0px; padding:0px;">
+<body id="page-top" onload="initialize()" style="margin:0px; padding:0px; width:100%">
 
   <div id="header"></div>
-  <div class="container" style="margin-top: 180px;">
-      <div class="row">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-title" data-bind="text: moment(event().quantieme).format('LL')"></h2>
-            <h5 class="panel-title" data-bind="text: event().resto"></h5>
-          </div>
-          <table class="table">
-            <thead>
-              <tr><th>Participants</th></tr>
-            </thead>
-            <tbody data-bind="foreach: detail()">
-              <tr><td data-bind="text: user.nom+' '+user.prenom"></td></tr>
-            </tbody>
-          </table>
+  <div class="container" style="margin-top: 180px; max-width: 100%">
+      <div class="row" style="max-width: 1140px;  margin-left: auto; margin-right: auto;">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title" data-bind="text: moment(event().quantieme).format('LL')"></h2>
+                <h5 class="panel-title" data-bind="text: event().resto"></h5>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr><th>Participants</th></tr>
+                </thead>
+                <tbody data-bind="foreach: detail()">
+                  <tr><td data-bind="text: user.prenom+' '+user.nom"></td></tr>
+                </tbody>
+              </table>
+            </div>
         </div>
-    </div>
-    <div id="map_canvas"></div>
-    
-  
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <h5 class="panel-title" style="text-align : center;" data-bind="text: 'Adresse : '+event().adresse.numero+' '+event().adresse.rue+' '+event().adresse.ville"></h5>
+        <div id="map_canvas"></div>
+        <!--<div data-bind="with: event" class="mx-auto mb-5">
+          <h5 class="panel-title" data-bind="text: adresse.numero+' '+adresse.rue+' '+adresse.ville"></h5>
+        </div>-->
+      </div>
 
-    </div>
-
-  </div>
+      <div class="row" style="max-width: 1140px;  margin-left: auto; margin-right: auto;">
+          <form data-bind="submit: addComment" id="commentForm" name="sentComment" novalidate="novalidate">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" data-bind="with: user">
+                    <input data-bind="value:mail" class="form-control" id="email" type="email" placeholder="Votre mail *" required="required" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" data-bind="with: feedback">
+                    <textarea data-bind="value: commentaire" class="form-control" id="message" placeholder="Votre commentaire *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group" data-bind="with: feedback">
+                      <textarea data-bind="value: note" class="form-control" id="message" placeholder="Votre commentaire *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                      <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <button id="sendCommentButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Envoyez votre commentaire</button>
+                </div>
+              </div>
+            </form>
+      </div>
   <section id="about">
   <div id="footer"></div>
   </section>
