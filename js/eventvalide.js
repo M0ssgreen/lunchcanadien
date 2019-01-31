@@ -15,7 +15,7 @@
   var ViewModel = function () {
     var self = this;
     self.event = ko.observableArray();
-    self.eventByToto = ko.observableArray();
+    self.petitdetail = ko.observableArray();
     self.eventByMail = ko.observableArray();
     self.error = ko.observable();
     self.detail = ko.observableArray();
@@ -49,6 +49,7 @@
     var demandeUri ='http://localhost:8080/events';
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
+    var demandeByIdEvUri ='http://localhost:8080/demandes';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -66,7 +67,12 @@
     function getAllEvents() {
         ajaxHelper(eventUri, 'GET').done(function (data) {
             self.event(data);
+            ajaxHelper(demandeUri + '?eventId=' + data.id, 'GET').done(function (demandes) {
+                self.petitdetail(demandes);
+                console.log(data.id)
+            });
         });
+        
     }
     function getEventsByToto() {
         ajaxHelper(eventValidEmailTotoUri, 'GET').done(function (data) {
@@ -105,7 +111,7 @@
     }
 
     self.getMyEvent = function () {
-        //document.getElementById("eventAll").hidden = true;
+        document.getElementById("eventAll").hidden = true;
         document.getElementById("eventMail").hidden = false;
         var email = self.userMail.mail();
         console.log(email)
@@ -123,7 +129,7 @@
         self.detail(data);
         });
 
-        document.location.href="/lunchcanadienfrontend/event.html?id="+item.id;
+        document.location.href="/lunchcanadien/event.html?id="+item.id;
     }
 
 
@@ -173,7 +179,7 @@
     }
 
      // Fetch the initial data.*/
-     getEventsByToto();
+     
      
      getAllEvents();
      

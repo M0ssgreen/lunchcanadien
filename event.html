@@ -129,7 +129,7 @@
       </div>
 
 
-      <script type="text/javascript">
+      <!----><script type="text/javascript">
       $(document).ready(function(){
   
         /* 1. Visualizing things on Hover - See next part for action on click */
@@ -227,6 +227,23 @@
                 </div>
               </div>
             </form>
+           
+            </div>
+            <div class="row" style="max-width: 1140px;  margin-left: auto; margin-right: auto; margin-top: 100px">
+              <div class="col-md-4">
+                    <table class="table">
+                      <thead>
+                        <tr><th>Commentaires</th></tr>
+                      </thead>
+                      <tbody data-bind="foreach: feedbackRead()">
+                        <tr data-bind="if: commentaire!=null">
+                          <td data-bind="text: commentaire"></td>
+                          <td data-bind="text: note"></td>                        
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
       </div>
   <section id="about">
   <div id="footer"></div>

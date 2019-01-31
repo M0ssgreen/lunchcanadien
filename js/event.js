@@ -7,6 +7,7 @@
     self.detail = ko.observableArray();
     self.demandes = ko.observableArray();
     self.selectedItems = ko.observableArray();
+    self.feedbackRead = ko.observableArray();
     self.newDemande = {
         date: ko.observable(),
         nom: ko.observable(),
@@ -46,6 +47,7 @@
     var validdemandeUri ='http://localhost:8080/demande/valid';
     var supprdemandeUri ='http://localhost:8080/demandes';
     var commentUri= 'http://localhost:8080/demandes/avis';
+    var demandesAll='http://localhost:8080/demandesAll'
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -101,13 +103,19 @@
             
         };
     
-        ajaxHelper(commentUri, 'PUT', demande) {
-        };
+        ajaxHelper(commentUri, 'PUT', demande) ;
         
+    }
+
+    function getFeedback(){
+        ajaxHelper(demandeUri + '?eventId=' + idEv, 'GET').done(function (demandes) {
+            self.feedbackRead(demandes);
+        });
     }
     
 
      getEventDetail();
+     getFeedback();
      
 };
 
