@@ -1,5 +1,28 @@
+var optionModel = function(id,name){
+    var self = this;
+    self.id = id;
+    self.name = name;
+}
+
 var ViewModel = function () {
     var self = this;
+
+    
+        var self = this;
+        self.options = [
+            new optionModel(100,"Solutec"),
+            new optionModel(101,"Solutec Lyon"),
+            new optionModel(102,"Miam"),
+            
+        ];
+        self.selectedOptionId = ko.observable(self.options[0].id);
+        self.selectedOption = ko.computed(function(){
+            return ko.utils.arrayFirst(self.options, function(item){
+                return item.id === self.selectedOptionId();
+            });
+        });
+    
+
     self.event = ko.observableArray();
     //self.eventByToto = ko.observableArray();
     self.eventByMail = ko.observableArray();
@@ -25,9 +48,11 @@ var ViewModel = function () {
         mail : ko.observable(),
     }
     self.availableEntreprise = ko.observableArray(),
-    self.selectedEntreprise = ko.observableArray()
+    self.nomEntreprise = ko.observableArray()
+    //self.idEntreprise = getIdEntreprises(self.availableEntreprise)
 
     var entrepriseUri ='http://localhost:8080/entreprises';
+    var idEntrepriseUri='http://localhost:8080/entreprisechoix/';
     var eventUri ='http://localhost:8080/events';
     //var eventValidEmailTotoUri ='http://localhost:8080/eventvalide?email=toto@gmail.com';
     var eventValidEmail = 'http://localhost:8080/eventvalide?email=';
@@ -50,6 +75,8 @@ var ViewModel = function () {
             alert('Erreur : Vous avez déjà proposé un lunch pour cette date.')
            }else{
             alert('Ok : Vous allez recevoir un mail de confirmation')
+            window.location = 'http://localhost/lunchcanadienfrontend/index.html';
+
            }
         });
     }
@@ -93,13 +120,15 @@ var ViewModel = function () {
 
     self.addDemande = function () {
         console.log("addDemande")
+        //getIdEntreprises(self.availableEntreprise)
         var demande = {
             user : {
+                //id:10,
                 nom :self.user.nom(),
                 prenom :self.user.prenom(),
                 email :self.user.mail(),
-                telephone :self.user.telephone()},
-                entreprise : {nom:self.user.entreprise()},
+                telephone :self.user.telephone(),
+                id :self.selectedOptionId()},
             
             event : {
                 quantieme: self.newDemande.date() +'T00:00:00.000Z',
